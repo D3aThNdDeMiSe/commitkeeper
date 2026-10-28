@@ -44,11 +44,13 @@ class Run:
         self.db = self.dir / "commitkeeper.db"
         if from_db:
             shutil.copy(from_db, self.db)
-        self.env = {**os.environ, "CK_DB": str(self.db), "CK_LOG_DIR": str(self.dir / "logs"),
-                    "CK_EXPORT_DIR": str(self.dir / "exports"), "CK_FIXTURES": str(fixtures),
-                    "CK_ALLOWLIST": ALLOWLIST, "CK_SEND_MODE": "dry_run", "COLUMNS": "160",
-                    "PYTHONIOENCODING": "utf-8"}
-        self.env.pop("CK_SIMULATE_FAILURE", None)
+        # Start from a clean environment: no .env, no personal mail settings, nothing that could leak
+        # a real address into the published results.
+        self.env = {k: v for k, v in os.environ.items() if not k.startswith("CK_")}
+        self.env.update({"CK_IGNORE_DOTENV": "1", "CK_DB": str(self.db), "CK_LOG_DIR": str(self.dir / "logs"),
+                         "CK_EXPORT_DIR": str(self.dir / "exports"), "CK_FIXTURES": str(fixtures),
+                         "CK_ALLOWLIST": ALLOWLIST, "CK_SEND_MODE": "dry_run", "CK_ROUTE_TO": "",
+                         "CK_SMTP_FROM": "maryam@example.com", "COLUMNS": "160", "PYTHONIOENCODING": "utf-8"})
         self.transcript = self.dir / "transcript.txt"
 
     def ck(self, *args: str, extra_env: dict | None = None) -> tuple[int, str]:

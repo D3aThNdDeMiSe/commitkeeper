@@ -48,37 +48,37 @@
       "llm_calls": 6,
       "extract_calls": 4,
       "decide_calls": 2,
-      "llm_ms": 44562,
+      "llm_ms": 44866,
       "prompt_tokens": 5228,
-      "output_tokens": 2429,
-      "wall_s": 46.4
+      "output_tokens": 2316,
+      "wall_s": 47.5
     },
     "maryam-c002": {
       "llm_calls": 7,
       "extract_calls": 4,
       "decide_calls": 3,
-      "llm_ms": 38666,
+      "llm_ms": 45074,
       "prompt_tokens": 6012,
-      "output_tokens": 2116,
-      "wall_s": 40.5
+      "output_tokens": 2480,
+      "wall_s": 47.8
     },
     "maryam-c003": {
       "llm_calls": 5,
       "extract_calls": 3,
       "decide_calls": 2,
-      "llm_ms": 24774,
+      "llm_ms": 28580,
       "prompt_tokens": 4682,
-      "output_tokens": 1337,
-      "wall_s": 26.4
+      "output_tokens": 1591,
+      "wall_s": 30.1
     },
     "maryam-c004": {
       "llm_calls": 5,
       "extract_calls": 1,
       "decide_calls": 4,
-      "llm_ms": 44108,
+      "llm_ms": 60835,
       "prompt_tokens": 4089,
-      "output_tokens": 2433,
-      "wall_s": 45.5
+      "output_tokens": 3389,
+      "wall_s": 62.1
     }
   },
   "evidence_sample": [

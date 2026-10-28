@@ -1,5 +1,5 @@
 
-$ commitkeeper run-cycle --profile maryam --now 2026-11-12T09:00:00+05:00 --no-memory   (exit 0, 1.3s, new process)
+$ commitkeeper run-cycle --profile maryam --now 2026-11-12T09:00:00+05:00 --no-memory   (exit 0, 2.1s, new process)
 maryam-c004 clock=2026-11-12T09:00:00+05:00 memory=OFF
   fetched 1 new message(s); duplicates skipped: 0; quarantined: 0
 
@@ -40,28 +40,29 @@ maryam-c004 clock=2026-11-12T09:00:00+05:00 memory=OFF
                                                                                                                                             new batch."         
                                                                                                                                                                 
   C-maryam-004   owed to me   bilal@example.com     Share annotated       2026-11-06 6d         open                  draft_nudge (llm)     <m09.maryam@fixtur  
-                                                    dataset with Maryam   overdue                                     Rule 3: Bilal owes    es.commitkeeper>    
-                                                                          was 2026-11-03                              the commitment        "I need until       
-                                                                                                                      'Share annotated      Friday for the      
-                                                                                                                      dataset with          annotated           
-                                                                                                                      Maryam' which is      dataset."           
-                                                                                                                      overdue by 3 days.                        
-                                                                                                                      Nudges sent: 0                            
-                                                                                                                      (limit 2).                                
+                                                    dataset with Maryam   overdue                                     Bilal owes the        es.commitkeeper>    
+                                                                          was 2026-11-03                              commitment 'Share     "I need until       
+                                                                                                                      annotated dataset     Friday for the      
+                                                                                                                      with Maryam' which    annotated           
+                                                                                                                      is overdue by 3       dataset."           
+                                                                                                                      days. No nudges                           
+                                                                                                                      have been sent yet,                       
+                                                                                                                      below the 2-nudge                         
+                                                                                                                      limit.                                    
                                                                                                                                                                 
   C-maryam-005   I owe        cs401@uni.example.e   Submit CS-401         2026-11-12 today      open                  wait (llm)            <m12.maryam@fixtur  
                               du                    Assignment 3          was 2026-11-09                              Pending deadline      es.commitkeeper>    
-                                                                                                                      change to             "Due to the server  
-                                                                                                                      2026-11-12 (message   outage this week,   
+                                                                                                                      change proposed on    "Due to the server  
+                                                                                                                      2026-11-09 (message   outage this week,   
                                                                                                                       m12.maryam@fixtures   the Assignment 3    
                                                                                                                       .commitkeeper)        deadline has been   
-                                                                                                                      still needs           extended to 12      
-                                                                                                                      approval. The         November 2026,      
-                                                                                                                      original due date     23:59."             
-                                                                                                                      of 2026-11-09 is                          
-                                                                                                                      today, but the                            
-                                                                                                                      extension is                              
-                                                                                                                      pending.                                  
+                                                                                                                      extends the due       extended to 12      
+                                                                                                                      date to 2026-11-12.   November 2026,      
+                                                                                                                      The user has not      23:59."             
+                                                                                                                      yet approved this                         
+                                                                                                                      change, so                                
+                                                                                                                      following up now                          
+                                                                                                                      would be premature.                       
                                                                                                                                                                 
   C-maryam-006   I owe        hina@example.com      Send half of the      2026-11-12 today      open                  wait (rule)           user                
                                                     conference poster                                                 due in 3 days;        ""                  

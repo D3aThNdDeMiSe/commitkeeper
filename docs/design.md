@@ -91,12 +91,12 @@ SQLite is authoritative (see `docs/memory_design.md` for the full table). *Worki
 
 | Cycle | LLM calls (extract + decide) | LLM time | Prompt / output tokens | Wall time |
 |---|---|---|---|---|
-| c1 | 6 (4 + 2) | 44.6 s | 5,228 / 2,429 | 46.4 s |
-| c2 | 7 (4 + 3) | 38.7 s | 6,012 / 2,116 | 40.5 s |
-| c3 | 5 (3 + 2) | 24.8 s | 4,682 / 1,337 | 26.4 s |
-| c4 | 5 (1 + 4) | 44.1 s | 4,089 / 2,433 | 45.5 s |
+| c1 | 6 (4 + 2) | 44.9 s | 5,228 / 2,316 | 47.5 s |
+| c2 | 7 (4 + 3) | 45.1 s | 6,012 / 2,480 | 47.8 s |
+| c3 | 5 (3 + 2) | 28.6 s | 4,682 / 1,591 | 30.1 s |
+| c4 | 5 (1 + 4) | 60.8 s | 4,089 / 3,389 | 62.1 s |
 
-Extraction calls take about 2 s; reasoning decisions take 10–25 s. Commitments that need no attention are decided by rule, so model calls scale with what changed rather than with the size of the register.
+Extraction calls take about 2 s; reasoning decisions take 10–30 s. Commitments that need no attention are decided by rule, so model calls scale with what changed rather than with the size of the register.
 
 ### What the evaluation caught during development
 
@@ -135,3 +135,26 @@ The final numbers come after these fixes. Each fix was driven by a failing scena
 ## Acknowledgements
 
 Built with AI pair-programming assistance (Claude Code). Libraries: openpyxl, rich, python-dateutil, requests, python-dotenv, pytest, aiosmtpd (versions in `requirements.txt`). Model: qwen3:8b (Apache-2.0) via Ollama. All sample data is fictional.
+
+## References
+
+1. Qwen Team (2025). *Qwen3 Technical Report.* arXiv:2505.09388.
+2. Ollama. *API reference: chat endpoint, structured outputs (`format` JSON schema) and thinking.* https://github.com/ollama/ollama/blob/main/docs/api.md
+3. Crispin, M. (2003). *RFC 3501: Internet Message Access Protocol, Version 4rev1.* IETF.
+4. Klensin, J. (2008). *RFC 5321: Simple Mail Transfer Protocol.* IETF.
+5. Desruisseaux, B. (2009). *RFC 5545: Internet Calendaring and Scheduling Core Object Specification (iCalendar).* IETF.
+6. OWASP (2025). *Top 10 for Large Language Model Applications: LLM01 Prompt Injection.* https://genai.owasp.org/llm-top-10/
+7. Yao, S. et al. (2023). *ReAct: Synergizing Reasoning and Acting in Language Models.* ICLR 2023.
+8. Packer, C. et al. (2023). *MemGPT: Towards LLMs as Operating Systems.* arXiv:2310.08560.
+
+## Evidence index
+
+| Evidence | File |
+|---|---|
+| Scenario table (input, saved state, expected, observed, result, evidence), memory comparison, sampled claims, duplicates, model usage | `results/scenario_results.md` (+ `.csv`, `summary.json`) |
+| Per-run CLI transcripts, audit logs (`events.jsonl`), SQLite databases and snapshots, Excel/ICS/outbox exports | `results/runs/<run>/` |
+| Decision stability across seeds | `results/decision_stability.md` |
+| Live Gmail IMAP read | `results/live_imap_test.md` |
+| SMTP delivery, allowlist block, no re-send | `results/smtp_local_test.txt` |
+| Excel manual columns preserved on re-export | `results/excel_manual_columns_test.md` |
+| Unit tests (dates, policy, injection, idempotency, isolation, versioning) | `tests/test_core.py` |

@@ -1,5 +1,5 @@
 
-$ commitkeeper run-cycle --profile maryam --now 2026-11-09T09:00:00+05:00 --no-memory   (exit 0, 6.5s, new process)
+$ commitkeeper run-cycle --profile maryam --now 2026-11-09T09:00:00+05:00 --no-memory   (exit 0, 7.1s, new process)
 maryam-c003 clock=2026-11-09T09:00:00+05:00 memory=OFF
   fetched 3 new message(s); duplicates skipped: 0; quarantined: 0
   x blocked <m10.maryam@fixtures.commitkeeper>: fulfilled  - no commitment 
@@ -30,17 +30,20 @@ maryam-c003 clock=2026-11-09T09:00:00+05:00 memory=OFF
   C-maryam-002   owed to me   imran.qadir@uni.exa   Send comments on      2026-11-04 5d         open                  wait (llm)            <m01.maryam@fixtur  
                               mple.edu              proposal draft to     overdue                                     The commitment is     es.commitkeeper>    
                                                     Maryam Siddiqui                                                   due today             "I will send you    
-                                                                                                                      (2026-11-04), and     my comments on      
+                                                                                                                      (2026-11-04) and      my comments on      
                                                                                                                       the recent message    your proposal       
                                                                                                                       from Imran Qadir      draft by            
-                                                                                                                      (already accounted    Wednesday."         
-                                                                                                                      for) confirms he                          
-                                                                                                                      will send comments                        
-                                                                                                                      by Wednesday                              
-                                                                                                                      (today). No pending                       
-                                                                                                                      deadline changes,                         
-                                                                                                                      and the due date is                       
-                                                                                                                      not overdue.                              
+                                                                                                                      (m01.maryam@fixture   Wednesday."         
+                                                                                                                      s.commitkeeper)                           
+                                                                                                                      already accounted                         
+                                                                                                                      for his prior                             
+                                                                                                                      commitment to send                        
+                                                                                                                      comments by                               
+                                                                                                                      Wednesday (today).                        
+                                                                                                                      No overdue status                         
+                                                                                                                      exists, so no                             
+                                                                                                                      immediate action is                       
+                                                                                                                      needed.                                   
                                                                                                                                                                 
   C-maryam-003   I owe        bilal@example.com     Push data-cleaning    2026-11-02            done                  -                     <m02.maryam@fixtur  
                                                     script to project                           delivered in                                es.commitkeeper>    
@@ -56,17 +59,16 @@ maryam-c003 clock=2026-11-09T09:00:00+05:00 memory=OFF
                                                     dataset with Maryam   overdue                                     Pending deadline      es.commitkeeper>    
                                                                           was 2026-11-03                              change to             "I need until       
                                                                                                                       2026-11-06            Friday for the      
-                                                                                                                      (approved on          annotated           
+                                                                                                                      (proposed on          annotated           
                                                                                                                       2026-11-04)           dataset."           
                                                                                                                       overrides other                           
-                                                                                                                      rules. The message                        
-                                                                                                                      'I need until                             
-                                                                                                                      Friday'                                   
-                                                                                                                      (2026-11-05) is                           
-                                                                                                                      already accounted                         
-                                                                                                                      for as it predated                        
-                                                                                                                      the current due                           
-                                                                                                                      date setting.                             
+                                                                                                                      rules. The original                       
+                                                                                                                      due date of                               
+                                                                                                                      2026-11-03 is now                         
+                                                                                                                      overdue, but the                          
+                                                                                                                      pending extension                         
+                                                                                                                      is still after                            
+                                                                                                                      today (2026-11-04).                       
                                                                                                                                                                 
   C-maryam-005   I owe        cs401@uni.example.e   Submit CS-401         2026-11-09 today      open                  wait (rule)           <m04.maryam@fixtur  
                               du                    Assignment 3                                                      due in 5 days;        es.commitkeeper>    

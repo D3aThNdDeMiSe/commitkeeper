@@ -1,5 +1,5 @@
 
-$ commitkeeper run-cycle --profile maryam --now 2026-11-04T09:00:00+05:00   (exit 0, 45.3s, new process)
+$ commitkeeper run-cycle --profile maryam --now 2026-11-04T09:00:00+05:00   (exit 0, 56.0s, new process)
 maryam-c002 clock=2026-11-04T09:00:00+05:00 memory=on
   fetched 5 new message(s); duplicates skipped: 1; quarantined: 1
   + new commitment C-maryam-006
@@ -65,17 +65,18 @@ maryam-c002 clock=2026-11-04T09:00:00+05:00 memory=on
                                                     dataset with Maryam   overdue                                     Pending deadline      es.commitkeeper>    
                                                                                                                       change to             "I'll share the     
                                                                                                                       2026-11-06            annotated dataset   
-                                                                                                                      (approved on          by Tuesday."        
-                                                                                                                      2026-11-04)                               
-                                                                                                                      overrides overdue                         
+                                                                                                                      overrides overdue     by Tuesday."        
                                                                                                                       status. Message                           
                                                                                                                       m09.maryam@fixtures                       
                                                                                                                       .commitkeeper                             
                                                                                                                       (Bilal's request                          
-                                                                                                                      for extension) is                         
-                                                                                                                      already accounted                         
-                                                                                                                      for in the pending                        
-                                                                                                                      change.                                   
+                                                                                                                      for extension)                            
+                                                                                                                      shows the original                        
+                                                                                                                      due date was                              
+                                                                                                                      already adjusted,                         
+                                                                                                                      and the user                              
+                                                                                                                      approved the new                          
+                                                                                                                      date on 2026-11-04.                       
                                                                                                                                                                 
   C-maryam-005   I owe        cs401@uni.example.e   Submit CS-401         2026-11-09 in 5d      open                  wait (rule)           <m04.maryam@fixtur  
                               du                    Assignment 3                                                      due in 5 days;        es.commitkeeper>    

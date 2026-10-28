@@ -158,6 +158,7 @@ def write_mailbox(profile: str, mails: list) -> None:
         msg.set_content(body)
         if attachment:
             msg.add_attachment(attachment[1], maintype="application", subtype="pdf", filename=attachment[0])
+            msg.set_boundary(f"=={key}.{profile}.boundary==")   # fixed boundary: regenerated files are byte-identical
         (folder / f"{key}.eml").write_bytes(bytes(msg))
 
 

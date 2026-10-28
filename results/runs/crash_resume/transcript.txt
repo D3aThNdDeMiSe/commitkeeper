@@ -1,14 +1,14 @@
 
-$ commitkeeper profile add maryam --name Maryam Siddiqui --email maryam@example.com   (exit 0, 1.0s, new process)
+$ commitkeeper profile add maryam --name Maryam Siddiqui --email maryam@example.com   (exit 0, 2.8s, new process)
 profile maryam created
 
-$ commitkeeper run-cycle --profile maryam --now 2026-11-02T09:00:00+05:00  [env {'CK_SIMULATE_FAILURE': 'fetch'}]   (exit 1, 0.9s, new process)
+$ commitkeeper run-cycle --profile maryam --now 2026-11-02T09:00:00+05:00  [env {'CK_SIMULATE_FAILURE': 'fetch'}]   (exit 1, 1.9s, new process)
 error: cycle maryam-c001 failed during 'started': simulated mailbox outage (CK_SIMULATE_FAILURE=fetch). State is saved; run `run-cycle` again to resume.
 
-$ commitkeeper run-cycle --profile maryam --now 2026-11-02T09:00:00+05:00  [env {'CK_SIMULATE_FAILURE': 'llm_after:2'}]   (exit 1, 6.7s, new process)
+$ commitkeeper run-cycle --profile maryam --now 2026-11-02T09:00:00+05:00  [env {'CK_SIMULATE_FAILURE': 'llm_after:2'}]   (exit 1, 8.6s, new process)
 error: cycle maryam-c001 failed during 'fetched': simulated LLM outage (CK_SIMULATE_FAILURE). State is saved; run `run-cycle` again to resume.
 
-$ commitkeeper run-cycle --profile maryam --now 2026-11-02T09:00:00+05:00   (exit 0, 40.6s, new process)
+$ commitkeeper run-cycle --profile maryam --now 2026-11-02T09:00:00+05:00   (exit 0, 46.2s, new process)
 maryam-c001 clock=2026-11-02T09:00:00+05:00 memory=on  (resumed from checkpoint)
   fetched 0 new message(s); duplicates skipped: 0; quarantined: 0
   + new commitment C-maryam-004
@@ -57,11 +57,12 @@ maryam-c001 clock=2026-11-02T09:00:00+05:00 memory=on  (resumed from checkpoint)
                                                                                                               recent messages           Tuesday."               
                                                                                                               indicate a pending                                
                                                                                                               deadline change. Since                            
-                                                                                                              the user is owed the                              
-                                                                                                              item and the due date                             
-                                                                                                              is not overdue, no                                
-                                                                                                              immediate action is                               
-                                                                                                              required.                                         
+                                                                                                              the direction is                                  
+                                                                                                              'owed_to_me' and the                              
+                                                                                                              due date is not                                   
+                                                                                                              overdue, the default                              
+                                                                                                              action is to wait until                           
+                                                                                                              the due date.                                     
                                                                                                                                                                 
   C-maryam-005   I owe        cs401@uni.example.edu     Submit CS-401             2026-11-09 in 7d   open     wait (rule)               <m04.maryam@fixtures.c  
                                                         Assignment 3                                          due in 7 days; nothing    ommitkeeper>            

@@ -1,5 +1,5 @@
 
-$ commitkeeper run-cycle --profile maryam --now 2026-11-12T09:00:00+05:00   (exit 0, 41.7s, new process)
+$ commitkeeper run-cycle --profile maryam --now 2026-11-12T09:00:00+05:00   (exit 0, 65.5s, new process)
 maryam-c004 clock=2026-11-12T09:00:00+05:00 memory=on
   fetched 1 new message(s); duplicates skipped: 0; quarantined: 0
   > C-maryam-002: draft_nudge (llm)
@@ -25,14 +25,15 @@ maryam-c004 clock=2026-11-12T09:00:00+05:00 memory=on
                                                                                                                                             Thursday."          
                                                                                                                                                                 
   C-maryam-002   owed to me   imran.qadir@uni.exa   Send comments on      2026-11-04 8d         open                  draft_nudge (llm)     <m01.maryam@fixtur  
-                              mple.edu              proposal draft to     overdue                                     Rule 3: Other         es.commitkeeper>    
-                                                    Maryam Siddiqui                                                   person (Imran         "I will send you    
-                                                                                                                      Qadir) owes the       my comments on      
-                                                                                                                      commitment, which     your proposal       
-                                                                                                                      is overdue by 8       draft by            
-                                                                                                                      days. Nudges sent     Wednesday."         
-                                                                                                                      (0) is below the                          
-                                                                                                                      limit (2).                                
+                              mple.edu              proposal draft to     overdue                                     Rule 3: Imran Qadir   es.commitkeeper>    
+                                                    Maryam Siddiqui                                                   owes Maryam           "I will send you    
+                                                                                                                      comments on the       my comments on      
+                                                                                                                      proposal draft (due   your proposal       
+                                                                                                                      2026-11-04), which    draft by            
+                                                                                                                      is overdue by 8       Wednesday."         
+                                                                                                                      days. No nudges                           
+                                                                                                                      have been sent                            
+                                                                                                                      (limit 2).                                
                                                                                                                                                                 
   C-maryam-003   I owe        bilal@example.com     Push data-cleaning    2026-11-02            done                  -                     <m02.maryam@fixtur  
                                                     script to project                           delivered in                                es.commitkeeper>    
@@ -45,19 +46,17 @@ maryam-c004 clock=2026-11-12T09:00:00+05:00 memory=on
                                                                                                                                             new batch."         
                                                                                                                                                                 
   C-maryam-004   owed to me   bilal@example.com     Share annotated       2026-11-06 6d         open                  wait (llm)            <m09.maryam@fixtur  
-                                                    dataset with Maryam   overdue                                     Rule 1: Recent        es.commitkeeper>    
-                                                                          was 2026-11-03                              message m13 shows     "I need until       
-                                                                                                                      Bilal is away until   Friday for the      
-                                                                                                                      14 November (after    annotated           
-                                                                                                                      today's date), so     dataset."           
-                                                                                                                      following up now                          
-                                                                                                                      would be premature.                       
-                                                                                                                      The commitment is                         
-                                                                                                                      overdue by 6 days,                        
-                                                                                                                      but the pending                           
-                                                                                                                      unavailability                            
-                                                                                                                      overrides rules                           
-                                                                                                                      2-4.                                      
+                                                    dataset with Maryam   overdue                                     Bilal's automatic     es.commitkeeper>    
+                                                                          was 2026-11-03                              reply (message 13)    "I need until       
+                                                                                                                      indicates he is       Friday for the      
+                                                                                                                      away until 14         annotated           
+                                                                                                                      November, which is    dataset."           
+                                                                                                                      after today (12                           
+                                                                                                                      November). Rule 1                         
+                                                                                                                      overrides other                           
+                                                                                                                      rules, so we must                         
+                                                                                                                      wait before                               
+                                                                                                                      following up.                             
                                                                                                                                                                 
   C-maryam-005   I owe        cs401@uni.example.e   Submit CS-401         2026-11-12 today      open                  remind_me (llm)       <m12.maryam@fixtur  
                               du                    Assignment 3          was 2026-11-09                              Rule 2: User owes     es.commitkeeper>    
@@ -89,14 +88,14 @@ maryam-c004 clock=2026-11-12T09:00:00+05:00 memory=on
   A-maryam-008   draft_nudge (proposed)   C-maryam-002   To: imran.qadir@uni.example.edu                          approve A-maryam-008  |  reject A-maryam-008  
                                                          Subject: Follow-up: Send comments on proposal draft to                                                 
                                                          Maryam Siddiqui                                                                                        
-                                                         Dear Dr. Imran, I hope you're well. I wanted to follow                                                 
-                                                         up on the comments for the proposal draft, which were                                                  
-                                                         due by Wednesday, November 4. Have you had a chance to                                                 
-                                                         review it? Please let me know if there are any issues.                                                 
-                                                         Best regards, Maryam                                                                                   
-                                                         why: Rule 3: Other person (Imran Qadir) owes the                                                       
-                                                         commitment, which is overdue by 8 days. Nudges sent                                                    
-                                                         (0) is below the limit (2).                                                                            
+                                                         Dear Dr. Imran, I wanted to follow up on the comments                                                  
+                                                         for the proposal draft. The due date was November 4,                                                   
+                                                         but I haven’t received them yet. Could you please                                                      
+                                                         share them at your earliest convenience? Best regards,                                                 
+                                                         Maryam                                                                                                 
+                                                         why: Rule 3: Imran Qadir owes Maryam comments on the                                                   
+                                                         proposal draft (due 2026-11-04), which is overdue by 8                                                 
+                                                         days. No nudges have been sent (limit 2).                                                              
                                                                                                                                                                 
 REMINDER C-maryam-005: Rule 2: User owes the assignment and it is due today (2026-11-12). The due date is imminent, requiring a reminder despite the low nudge 
 count.

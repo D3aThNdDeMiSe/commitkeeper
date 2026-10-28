@@ -29,6 +29,7 @@ Cycle 4  Bilal's auto-reply: "away until 14 November"            -> remembers 1 
 - [Project layout](#project-layout)
 - [Limitations and roadmap](#limitations-and-roadmap)
 - [Acknowledgements](#acknowledgements)
+- [License](#license)
 
 ## Features
 
@@ -78,7 +79,15 @@ flowchart LR
 
 ## Install
 
-You need Python 3.10+, Ollama, and about 6.5 GB of free GPU memory (or a patient CPU). Tested on Windows 11 with Python 3.14 and an 8 GB RTX 5060 Laptop GPU.
+You need Python 3.10+, Ollama, and about 6.5 GB of free GPU memory (or a patient CPU).
+
+| Tested with | Version |
+|---|---|
+| OS / GPU | Windows 11, NVIDIA RTX 5060 Laptop GPU (8 GB) |
+| Python | 3.14.5 |
+| Ollama | 0.34.1 |
+| Model | `qwen3:8b`, 8.2B parameters, Q4_K_M, digest `500a1f067a9f` |
+| Python packages | pinned in [requirements.txt](requirements.txt) (openpyxl 3.1.5, rich 15.0.0, python-dateutil 3.0.0, requests 2.34.2, python-dotenv 1.2.4, pytest 9.2.0, aiosmtpd 1.4.6) |
 
 ```bash
 ollama pull qwen3:8b
@@ -226,6 +235,7 @@ Per-profile preferences (`commitkeeper prefs set …`) are versioned in the stor
 
 | Command | What it does |
 |---|---|
+| `init` | create the SQLite store and its schema (other commands also do this on first use) |
 | `profile add <id> --name --email` / `profile list` | create or list isolated profiles |
 | `run-cycle --profile <id> [--source eml\|imap] [--now ISO] [--no-memory]` | run one review cycle (resumes a failed one) |
 | `status --profile <id>` | commitments, recommended actions, evidence, items needing you |
@@ -258,14 +268,14 @@ The harness replays the sample story through the real CLI, with every step a new
 | Sampled factual claims correct | 5/5 |
 | Duplicate deliveries in retry/crash tests | 0 |
 | Key decisions stable across 3 seeds | 18/18 |
-| Model calls per cycle / LLM time | 5–7 / 25–45 s, $0 (local) |
+| Model calls per cycle / LLM time | 5–7 / 29–61 s, $0 (local) |
 
 Details are in [results/scenario_results.md](results/scenario_results.md), [results/decision_stability.md](results/decision_stability.md), [results/smtp_local_test.txt](results/smtp_local_test.txt) and [results/excel_manual_columns_test.md](results/excel_manual_columns_test.md). Every run's transcript, audit log, database snapshots and exports are in `results/runs/`.
 
 ## Documentation
 
 - [Design and evaluation](docs/design.md): architecture, decision loop, memory lifecycle, full results, and the failures found and fixed during development.
-- [Memory design](docs/memory_design.md): what is stored, when it is read, how it is corrected and deleted.
+- [Memory design](docs/memory_design.md): what is stored, when it is read, how it is corrected and deleted. The schema itself is in [commitkeeper/db.py](commitkeeper/db.py).
 - Technical report: [PDF](docs/report/CommitKeeper_Technical_Report_I22-0395.pdf) / [Word](docs/report/CommitKeeper_Technical_Report_I22-0395.docx).
 
 ## Project layout
@@ -298,3 +308,7 @@ docs/                  design docs, architecture figure, technical report
 ## Acknowledgements
 
 Built with AI pair-programming assistance (Claude Code). The model is qwen3:8b (Qwen, Apache-2.0) served by Ollama. All people, addresses and emails in `data/fixtures/` are fictional.
+
+## License
+
+[MIT](LICENSE) © 2026 Immad Shah

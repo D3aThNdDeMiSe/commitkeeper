@@ -1,5 +1,5 @@
 
-$ commitkeeper run-cycle --profile maryam --now 2026-11-04T09:00:00+05:00 --no-memory   (exit 0, 20.2s, new process)
+$ commitkeeper run-cycle --profile maryam --now 2026-11-04T09:00:00+05:00 --no-memory   (exit 0, 24.2s, new process)
 maryam-c002 clock=2026-11-04T09:00:00+05:00 memory=OFF
   fetched 5 new message(s); duplicates skipped: 0; quarantined: 1
   + new commitment C-maryam-006
@@ -36,7 +36,7 @@ maryam-c002 clock=2026-11-04T09:00:00+05:00 memory=OFF
                                                                                                                                                                 
   C-maryam-003   I owe        bilal@example.com     Push data-cleaning    2026-11-02 2d         open                  remind_me (llm)       <m02.maryam@fixtur  
                                                     script to project     overdue                                     Rule 2: User owes     es.commitkeeper>    
-                                                    repo                                                              the commitment and    "I'll push the      
+                                                    repo                                                              the commitment, and   "I'll push the      
                                                                                                                       it is due today       data-cleaning       
                                                                                                                       (2026-11-02). The     script to our       
                                                                                                                       due date is within    project repo by     
@@ -46,13 +46,18 @@ maryam-c002 clock=2026-11-04T09:00:00+05:00 memory=OFF
                                                                                                                                                                 
   C-maryam-004   owed to me   bilal@example.com     Share annotated       2026-11-03 1d         open                  wait (llm)            <m03.maryam@fixtur  
                                                     dataset with Maryam   overdue                                     The commitment is     es.commitkeeper>    
-                                                                                                                      due in 1 day (not     "I'll share the     
-                                                                                                                      overdue), and no      annotated dataset   
-                                                                                                                      pending deadline      by Tuesday."        
-                                                                                                                      changes or new                            
-                                                                                                                      dates proposed in                         
-                                                                                                                      recent messages.                          
-                                                                                                                      Rule 4 applies.                           
+                                                                                                                      due within 1 day      "I'll share the     
+                                                                                                                      (2026-11-03) and no   annotated dataset   
+                                                                                                                      recent messages       by Tuesday."        
+                                                                                                                      indicate a pending                        
+                                                                                                                      deadline change.                          
+                                                                                                                      Since the direction                       
+                                                                                                                      is 'owed_to_me' and                       
+                                                                                                                      the due date is not                       
+                                                                                                                      overdue, the                              
+                                                                                                                      default action is                         
+                                                                                                                      to wait until the                         
+                                                                                                                      due date.                                 
                                                                                                                                                                 
   C-maryam-005   I owe        cs401@uni.example.e   Submit CS-401         2026-11-09 in 5d      open                  wait (rule)           <m04.maryam@fixtur  
                               du                    Assignment 3                                                      due in 7 days;        es.commitkeeper>    
@@ -75,14 +80,12 @@ maryam-c002 clock=2026-11-04T09:00:00+05:00 memory=OFF
                                                                                                                       no recent messages    Systems) must be    
                                                                                                                       indicate a pending    submitted on        
                                                                                                                       deadline change or    Google Classroom    
-                                                                                                                      unavailability        by 9 November       
-                                                                                                                      beyond the current    2026, 23:59. Late   
-                                                                                                                      due date. Rule 1      submissions will    
-                                                                                                                      applies as there      not be accepted     
-                                                                                                                      are no messages       without prior       
-                                                                                                                      proposing new dates   approval."          
-                                                                                                                      or unavailability                         
-                                                                                                                      past today.                               
+                                                                                                                      urgency. Rule 1       by 9 November       
+                                                                                                                      applies as there      2026, 23:59. Late   
+                                                                                                                      are no new date       submissions will    
+                                                                                                                      proposals or          not be accepted     
+                                                                                                                      unavailability        without prior       
+                                                                                                                      claims from Hina.     approval."          
                                                                                                                                                                 
   C-maryam-007   I owe        hina@example.com      Send half of          unresolved            needs clarification   ask_clarification     <m08.maryam@fixtur  
                                                     conference poster                           'sometime next        (rule)                es.commitkeeper>    

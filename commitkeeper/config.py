@@ -12,7 +12,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
-load_dotenv(ROOT / ".env")
+if not os.getenv("CK_IGNORE_DOTENV"):          # the evaluation harness sets this so personal settings never leak in
+    load_dotenv(ROOT / ".env")
 
 
 def _bool(name: str, default: bool) -> bool:
