@@ -1,6 +1,6 @@
 # Live Gmail (IMAP) integration test
 
-Owned test Gmail account created for this project (address and App Password kept in the git-ignored `.env`; not reproduced here). Run on the student's machine against the real Gmail servers on 2026-10-29.
+Owned test Gmail account created for this project (address and App Password kept in the git-ignored `.env`; not reproduced here). Run against the real Gmail servers on 2026-10-29.
 
 | Step | Command | Outcome |
 |---|---|---|

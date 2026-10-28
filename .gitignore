@@ -27,3 +27,6 @@ results/runs/_fixtures_no_m13/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Personal working notes, kept outside the published repo
+/coursework/

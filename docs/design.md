@@ -1,14 +1,14 @@
-# CommitKeeper: an inbox commitment tracker with persistent memory
+# CommitKeeper: design and evaluation
 
-*Technical report, Agentic AI Assignment 2 (catalogue idea D13). Student: Immad Shah, I22-0395.*
+How CommitKeeper works, why it is built this way, and how well it performs on the reference scenarios. For installation and usage, see the [README](../README.md).
 
-## 1. Problem and scope
+## 1. Problem and goals
 
-Students and early-career researchers make and receive many small promises by email: "send me the chapter by Thursday", "I'll share the dataset by Tuesday", "the deadline is extended to the 12th". The work is recurring and stateful. Each time new mail arrives, the person has to remember what was promised, notice when a promise moved or was kept, and decide whom to chase without nagging. A stateless assistant cannot do this: it would re-extract the same items, miss that "I need until Friday" refers to an earlier promise, and nudge someone it already nudged.
+Anyone who works over email makes and receives many small promises: "send me the chapter by Thursday", "I'll share the dataset by Tuesday", "the deadline is extended to the 12th". Keeping track is recurring and stateful work. Each time new mail arrives you have to remember what was promised, notice when a promise moved or was kept, and decide whom to chase without nagging. A stateless assistant cannot do this: it would re-extract the same items, miss that "I need until Friday" refers to an earlier promise, and nudge someone it already nudged.
 
-**Acceptance criteria (approved scope).** For one mailbox per profile, across at least three review cycles with a process restart:
+**Goals.** For one mailbox per profile, across any number of review cycles and process restarts:
 
-1. extract commitments in both directions with an evidence quote and a code-resolved due date;
+1. extract commitments in both directions, each with an evidence quote and a due date resolved by code;
 2. link later emails to existing commitments (revised deadline, fulfilment, unsupported claim, duplicate);
 3. recommend a next action per commitment using remembered history, with approval before any deadline change, unsupported closure or outgoing email;
 4. deliver approved nudges exactly once to allowlisted owned addresses;
@@ -121,7 +121,8 @@ The final numbers come after these fixes. Each fix was driven by a failing scena
 - Prompts were tuned on the demo fixtures (13 + 3 emails). Performance on real, messier mail (HTML newsletters, long threads, other languages) is not measured.
 - The injection detector is pattern-based plus a model flag, so a novel phrasing could evade detection. The structural guarantees (no code path from email to recipients, allowlist, preferences or unrelated commitments) still hold.
 - "by Friday" is resolved as the next Friday on or after the email date; "next Friday" is asked about. Time zones come from the email header; the time of day is ignored.
-- Gmail access uses an App Password over IMAP/SMTP, not OAuth, so it needs an account that allows 2-Step Verification. University-managed accounts may not, which is why a dedicated test account is used. The scenario suite runs on `.eml` exports for reproducibility; the live Gmail read was demonstrated separately.
+- Gmail access uses an App Password over IMAP/SMTP, not OAuth, so it needs an account that allows 2-Step Verification. Organisation-managed accounts (school or work) often do not. The scenario suite runs on `.eml` exports for reproducibility; the live Gmail read is documented separately.
+- The IMAP reader processes every unseen message in the configured folders, so the first cycle on a large mailbox is slow. Point `CK_IMAP_FOLDERS` at a dedicated label.
 
 ## 8. Implementation decisions
 
@@ -131,6 +132,6 @@ The final numbers come after these fixes. Each fix was driven by a failing scena
 - **Every CLI command is a new process.** Restarts are the normal case, not a special demo trick.
 - **Simulated clock.** `--now` makes four weeks reproducible in minutes. Domain records use the review clock and the audit log uses real time.
 
-## Appendix: AI assistance and external code
+## Acknowledgements
 
-Developed with AI assistance (Claude Code) for scaffolding, code and documentation. Libraries: openpyxl, rich, python-dateutil, requests, python-dotenv, pytest, aiosmtpd (versions in `requirements.txt`). Model: qwen3:8b (Apache-2.0) via Ollama 0.34.1. All sample data is fictional.
+Built with AI pair-programming assistance (Claude Code). Libraries: openpyxl, rich, python-dateutil, requests, python-dotenv, pytest, aiosmtpd (versions in `requirements.txt`). Model: qwen3:8b (Apache-2.0) via Ollama. All sample data is fictional.

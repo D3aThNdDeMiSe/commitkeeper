@@ -1,2 +1,2 @@
-"""CommitKeeper - inbox commitment tracker agent with persistent memory (catalogue idea D13)."""
+"""CommitKeeper: a local-first email agent that tracks commitments and follows up, with persistent memory."""
 __version__ = "1.0.0"
