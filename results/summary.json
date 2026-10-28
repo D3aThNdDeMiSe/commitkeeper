@@ -1,0 +1,112 @@
+{
+  "pass_rate": "12/12",
+  "scenarios": {
+    "S1": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true,
+    "S7": true,
+    "S8": true,
+    "S9": true,
+    "S10": true,
+    "S11": true,
+    "S12": true
+  },
+  "memory_comparison": [
+    {
+      "case": "MC1",
+      "inputs": "Cycle 2 inputs (Bilal's delay, Maryam's 'pushed' email, forwarded announcement)",
+      "expected": "Delay is attached to the existing dataset commitment, the script commitment is closed, and the forward is not turned into a second Assignment 3 commitment",
+      "memory_on": true,
+      "observed_on": "new commitments 1; plans 001=remind_me, 002=wait, 004=wait, 005=wait, 006=ask_clarification",
+      "memory_off": false,
+      "observed_off": "new commitments 2; plans 006=wait, 007=ask_clarification"
+    },
+    {
+      "case": "MC2",
+      "inputs": "Cycle 3 inputs (chapter sent with attachment, Imran's completion claim, deadline extension)",
+      "expected": "Literature review closed, Imran's claim held for confirmation, extension proposed on the existing Assignment 3 commitment",
+      "memory_on": true,
+      "observed_on": "new commitments 0; plans 002=confirm_completion, 004=draft_nudge, 005=wait, 006=wait",
+      "memory_off": false,
+      "observed_off": "new commitments 0; plans none"
+    },
+    {
+      "case": "MC3",
+      "inputs": "Cycle 4 input (only Bilal's auto-reply)",
+      "expected": "Reminders for the two items due today (Assignment 3 after the approved extension, poster after the correction) and 'wait' for the dataset because of the auto-reply",
+      "memory_on": true,
+      "observed_on": "new commitments 0; plans 002=draft_nudge, 004=wait, 005=remind_me, 006=remind_me",
+      "memory_off": false,
+      "observed_off": "new commitments 0; plans none"
+    }
+  ],
+  "metrics": {
+    "maryam-c001": {
+      "llm_calls": 6,
+      "extract_calls": 4,
+      "decide_calls": 2,
+      "llm_ms": 44562,
+      "prompt_tokens": 5228,
+      "output_tokens": 2429,
+      "wall_s": 46.4
+    },
+    "maryam-c002": {
+      "llm_calls": 7,
+      "extract_calls": 4,
+      "decide_calls": 3,
+      "llm_ms": 38666,
+      "prompt_tokens": 6012,
+      "output_tokens": 2116,
+      "wall_s": 40.5
+    },
+    "maryam-c003": {
+      "llm_calls": 5,
+      "extract_calls": 3,
+      "decide_calls": 2,
+      "llm_ms": 24774,
+      "prompt_tokens": 4682,
+      "output_tokens": 1337,
+      "wall_s": 26.4
+    },
+    "maryam-c004": {
+      "llm_calls": 5,
+      "extract_calls": 1,
+      "decide_calls": 4,
+      "llm_ms": 44108,
+      "prompt_tokens": 4089,
+      "output_tokens": 2433,
+      "wall_s": 45.5
+    }
+  },
+  "evidence_sample": [
+    {
+      "claim": "C-maryam-001 'Send revised literature review chapter to Dr. Imran Qadir' due 2026-11-05",
+      "correct": true,
+      "detail": "quote verbatim in <m01.maryam@fixtures.commitkeeper>: True; expected due 2026-11-05"
+    },
+    {
+      "claim": "C-maryam-002 'Send comments on proposal draft to Maryam Siddiqui' due 2026-11-04",
+      "correct": true,
+      "detail": "quote verbatim in <m01.maryam@fixtures.commitkeeper>: True; expected due 2026-11-04"
+    },
+    {
+      "claim": "C-maryam-003 'Push data-cleaning script to project repo' due 2026-11-02",
+      "correct": true,
+      "detail": "quote verbatim in <m02.maryam@fixtures.commitkeeper>: True; expected due 2026-11-02"
+    },
+    {
+      "claim": "C-maryam-004 'Share annotated dataset with Maryam' due 2026-11-06",
+      "correct": true,
+      "detail": "quote verbatim in <m03.maryam@fixtures.commitkeeper>: True; expected due 2026-11-06"
+    },
+    {
+      "claim": "C-maryam-005 'Submit CS-401 Assignment 3' due 2026-11-12",
+      "correct": true,
+      "detail": "quote verbatim in <m04.maryam@fixtures.commitkeeper>: True; expected due 2026-11-12"
+    }
+  ],
+  "duplicates": 0
+}

@@ -1,0 +1,33 @@
+Message-ID: <m10.maryam@fixtures.commitkeeper>
+Date: Thu, 05 Nov 2026 17:45:00 +0500
+From: Maryam Siddiqui <maryam@example.com>
+To: Dr. Imran Qadir <imran.qadir@uni.example.edu>
+Subject: Re: Literature review chapter
+In-Reply-To: <m01.maryam@fixtures.commitkeeper>
+References: <m01.maryam@fixtures.commitkeeper>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============4329305293069937608=="
+
+--===============4329305293069937608==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Dr. Imran,
+
+Please find attached the revised literature review chapter. It now covers the=
+ three papers we discussed.
+
+Best regards,
+Maryam
+
+--===============4329305293069937608==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="lit_review_v2.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iajw8L1R5cGUvQ2F0YWxvZy9QYWdlcyAyIDAgUj4+ZW5kb2JqCjIgMCBv
+Ymo8PC9UeXBlL1BhZ2VzL0NvdW50IDAvS2lkc1tdPj5lbmRvYmoKdHJhaWxlcjw8L1Jvb3QgMSAw
+IFI+PgolJUVPRgo=
+
+--===============4329305293069937608==--

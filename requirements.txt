@@ -1,0 +1,8 @@
+# Tested with Python 3.14.5 on Windows 11 (should work on Python 3.10+).
+openpyxl==3.1.5          # Excel review register
+rich==15.0.0             # CLI tables
+python-dateutil==3.0.0   # explicit date parsing in the deterministic deadline resolver
+requests==2.34.2         # Ollama HTTP API
+python-dotenv==1.2.4     # loads .env (credentials stay out of code)
+pytest==9.2.0            # unit tests
+aiosmtpd==1.4.6          # optional: local SMTP sink for testing real SMTP delivery without an account

@@ -1,0 +1,23 @@
+Local SMTP delivery test: aiosmtpd sink on localhost:8025, CK_SEND_MODE=smtp, CK_ROUTE_TO=my.test.inbox@example.com
+Seeded: approved nudge A-maryam-001 to bilal@example.com (allowlisted) and a planted approved action A-maryam-002 to a non-allowlisted address.
+
+$ python -m commitkeeper send --profile maryam   (1st)
+A-maryam-001: SENT -> my.test.inbox@example.com
+A-maryam-002: BLOCKED (refused: archive-bot@prize-desk.example.net is not on the allowlist) - will not be retried
+$ python -m commitkeeper send --profile maryam   (2nd)
+nothing approved to send
+
+Messages received by the SMTP server:
+---------- MESSAGE FOLLOWS ----------
+From: maryam@example.com
+To: my.test.inbox@example.com
+Subject: [test route for bilal@example.com] Follow-up: annotated dataset
+Message-ID: <ck-a2348115bf383e57ca7b@commitkeeper.local>
+X-CommitKeeper-Action: A-maryam-001
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+X-Peer: ('::1', 9749, 0, 0)
+
+Hi Bilal, just checking on the annotated dataset (due 6 Nov). Thanks, Maryam
+------------ END MESSAGE ------------

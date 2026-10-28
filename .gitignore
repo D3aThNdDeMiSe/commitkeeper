@@ -1,0 +1,29 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Secrets: Gmail address and App Password live here, never commit it
+.env
+
+# Your own working store and outputs (they can contain real mail if you use --source imap).
+# The evaluation's copies, built only from fictional fixtures, live in results/ and ARE committed.
+data/commitkeeper.db
+data/*.db-journal
+/logs/
+/exports/
+
+# Helper copy made by the evaluation
+results/runs/_fixtures_no_m13/
+
+# Office lock files and editor/OS clutter
+~$*.docx
+~$*.xlsx
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
