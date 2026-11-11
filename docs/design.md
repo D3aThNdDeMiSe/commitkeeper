@@ -55,7 +55,7 @@ The model's decision changes the plan in observable ways. In cycle 2 the dataset
 1. **Mail reader** (`tools/mail_source.py`): read-only IMAP (`readonly=True`, `BODY.PEEK`) against an owned test account, or a folder of `.eml` exports labelled `eml_export`. It returns only unseen, not-future messages and ignores nudges the agent sent itself. It was verified live against an owned test Gmail account (`results/live_imap_test.md`).
 2. **Commitment store** (`memory.py`): SQLite reads and writes scoped by profile, with versioning and idempotency keys. Every read and write is logged.
 3. **Deadline resolver and policy checker** (`dates.py`, `safety.py`): deterministic dates, injection detection, evidence verification and action policy. Unit-tested in `tests/test_core.py`.
-4. **Nudge sender** (`tools/mail_sender.py`): SMTP, or an UNSENT draft in dry-run mode, only for approved actions. Approval (`decided_at`), delivery (`status`, `sent_at`, `delivered_to`) and failure (`attempts`, `last_error`) are recorded separately. An optional `CK_ROUTE_TO` delivers to an owned test inbox. This was verified against a local SMTP server (`results/smtp_local_test.txt`).
+4. **Nudge sender** (`tools/mail_sender.py`): SMTP, or an UNSENT draft in dry-run mode, only for approved actions. Approval (`decided_at`), delivery (`status`, `sent_at`, `delivered_to`) and failure (`attempts`, `last_error`) are recorded separately. An optional `CK_ROUTE_TO` delivers to an owned test inbox. This was verified against a local SMTP server (`results/smtp_local_test.txt`) and with one real delivery through Gmail SMTP to the owned test inbox (`results/live_imap_test.md`).
 5. **Exporter** (`tools/exporter.py`): an Excel register (Register / Deadline history / Actions / About) whose manual columns are read back and preserved, and an `.ics` calendar with stable UIDs and SEQUENCE = version.
 
 ## 5. Memory lifecycle
@@ -85,7 +85,7 @@ SQLite is authoritative (see `docs/memory_design.md` for the full table). *Worki
 
 **Memory enabled vs disabled** (same snapshot, inputs and model settings; expected outcome written before running): memory on **3/3**, memory off **0/3**. Without memory, cycle 2 turned Bilal's delay into a second dataset commitment and never closed the script commitment. Cycle 3 could not link the attachment or the completion claim to anything. Cycle 4 produced no reminders at all, because the commitments due that day were invisible.
 
-**Evidence correctness:** 5/5 sampled claims had a quote that appears verbatim in the source email and the correct current due date. **Duplicate actions in retry tests:** 0 duplicate deliveries (SMTP retry and crash/resume). **Decision stability:** the six key next-action decisions replayed with three seeds gave 18/18 expected actions (`results/decision_stability.md`). **Real integrations:** a live cycle read the demo emails over IMAP from an owned test Gmail account and produced the same 5 commitments as the offline run (`results/live_imap_test.md`). SMTP delivery was verified against a local SMTP server, including allowlist blocking and no re-send (`results/smtp_local_test.txt`), and the Gmail SMTP login was accepted.
+**Evidence correctness:** 5/5 sampled claims had a quote that appears verbatim in the source email and the correct current due date. **Duplicate actions in retry tests:** 0 duplicate deliveries (SMTP retry and crash/resume). **Decision stability:** the six key next-action decisions replayed with three seeds gave 18/18 expected actions (`results/decision_stability.md`). **Real integrations:** all four cycles of the sample story were run over IMAP against an owned test Gmail account, and every plan matched the offline run (`results/live_imap_test.md`). The approved nudge was delivered through Gmail SMTP to the owned test inbox exactly once, after a simulated first-attempt failure (attempts = 2), and the next cycle skipped that real message as the agent's own. SMTP allowlist blocking and no re-send were also verified against a local SMTP server (`results/smtp_local_test.txt`).
 
 **Model calls, latency and cost** (main run; qwen3:8b on an RTX 5060 Laptop GPU, about 6.2 GB VRAM, $0):
 
@@ -121,7 +121,7 @@ The final numbers come after these fixes. Each fix was driven by a failing scena
 - Prompts were tuned on the demo fixtures (13 + 3 emails). Performance on real, messier mail (HTML newsletters, long threads, other languages) is not measured.
 - The injection detector is pattern-based plus a model flag, so a novel phrasing could evade detection. The structural guarantees (no code path from email to recipients, allowlist, preferences or unrelated commitments) still hold.
 - "by Friday" is resolved as the next Friday on or after the email date; "next Friday" is asked about. Time zones come from the email header; the time of day is ignored.
-- Gmail access uses an App Password over IMAP/SMTP, not OAuth, so it needs an account that allows 2-Step Verification. Organisation-managed accounts (school or work) often do not. The scenario suite runs on `.eml` exports for reproducibility; the live Gmail read is documented separately.
+- Gmail access uses an App Password over IMAP/SMTP, not OAuth, so it needs an account that allows 2-Step Verification. Organisation-managed accounts (school or work) often do not. The scenario suite runs on `.eml` exports for reproducibility; the live Gmail run (read and send) is documented separately.
 - The IMAP reader processes every unseen message in the configured folders, so the first cycle on a large mailbox is slow. Point `CK_IMAP_FOLDERS` at a dedicated label.
 
 ## 8. Implementation decisions
@@ -154,7 +154,7 @@ Built with AI pair-programming assistance (Claude Code). Libraries: openpyxl, ri
 | Scenario table (input, saved state, expected, observed, result, evidence), memory comparison, sampled claims, duplicates, model usage | `results/scenario_results.md` (+ `.csv`, `summary.json`) |
 | Per-run CLI transcripts, audit logs (`events.jsonl`), SQLite databases and snapshots, Excel/ICS/outbox exports | `results/runs/<run>/` |
 | Decision stability across seeds | `results/decision_stability.md` |
-| Live Gmail IMAP read | `results/live_imap_test.md` |
+| Live Gmail run: IMAP read (4 cycles), one real SMTP delivery, own-nudge skip | `results/live_imap_test.md` |
 | SMTP delivery, allowlist block, no re-send | `results/smtp_local_test.txt` |
 | Excel manual columns preserved on re-export | `results/excel_manual_columns_test.md` |
 | Unit tests (dates, policy, injection, idempotency, isolation, versioning) | `tests/test_core.py` |

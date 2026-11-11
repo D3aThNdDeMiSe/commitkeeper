@@ -208,7 +208,7 @@ commitkeeper profile add me --name "Your Name" --email you@example.com
 commitkeeper run-cycle --profile me --source imap
 ```
 
-To replay the sample story against a real inbox, `seed-imap --profile maryam --until <date>` copies the fixture emails into it first. The reader opens folders read-only (`BODY.PEEK`) and ignores the nudges CommitKeeper sent itself. A live run is documented in [results/live_imap_test.md](results/live_imap_test.md).
+To replay the sample story against a real inbox, `seed-imap --profile maryam --until <date>` copies the fixture emails into it first. The reader opens folders read-only (`BODY.PEEK`) and ignores the nudges CommitKeeper sent itself. A live run of all four cycles against Gmail, including one real nudge delivered to the owned test inbox (after a simulated first-attempt failure) and then skipped by the next fetch, is documented in [results/live_imap_test.md](results/live_imap_test.md).
 
 ## Configuration
 
@@ -269,8 +269,9 @@ The harness replays the sample story through the real CLI, with every step a new
 | Duplicate deliveries in retry/crash tests | 0 |
 | Key decisions stable across 3 seeds | 18/18 |
 | Model calls per cycle / LLM time | 5–7 / 29–61 s, $0 (local) |
+| Live Gmail run: plans matching the reference / real emails sent | 4/4 cycles / exactly 1 |
 
-Details are in [results/scenario_results.md](results/scenario_results.md), [results/decision_stability.md](results/decision_stability.md), [results/smtp_local_test.txt](results/smtp_local_test.txt) and [results/excel_manual_columns_test.md](results/excel_manual_columns_test.md). Every run's transcript, audit log, database snapshots and exports are in `results/runs/`.
+Details are in [results/scenario_results.md](results/scenario_results.md), [results/decision_stability.md](results/decision_stability.md), [results/live_imap_test.md](results/live_imap_test.md), [results/smtp_local_test.txt](results/smtp_local_test.txt) and [results/excel_manual_columns_test.md](results/excel_manual_columns_test.md). Every run's transcript, audit log, database snapshots and exports are in `results/runs/`.
 
 ## Documentation
 
